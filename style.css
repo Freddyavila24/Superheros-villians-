@@ -1,0 +1,968 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Comic Neue", sans-serif;
+}
+
+/* =========================
+   MAIN LANDING PAGE
+========================= */
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+
+
+html {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 30px;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/HV.jpg);
+  background-color: transparent;
+  color: #ffffff;
+}
+body > footer:last-child {
+  margin-bottom: 0;
+}
+
+#nav--pg,
+.hero,
+.superheros,
+.villains {
+  flex-shrink: 0;
+}
+
+#nav--pg {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#nav--pg nav {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 85px;
+  margin: 0 auto;
+  padding: 12px 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 12px;
+  box-sizing: border-box;
+  min-height: 85px;
+}
+
+.logo__link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+#ShV__logo {
+  display: block;
+  width: 150px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.nav__link--list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 35px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav__link {
+  list-style: none;
+}
+
+.nav__link--anchor {
+  position: relative;
+  display: inline-block;
+  padding: 8px 0;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* Yellow underline animation */
+.link__hover-effect--yellow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: #e8e337;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* Hover effect */
+.link__hover-effect--yellow:hover {
+  color: #e8e337;
+}
+
+.link__hover-effect--yellow:hover::after {
+  width: 100%;
+}
+
+/* Keyboard accessibility */
+.link__hover-effect--yellow:focus-visible {
+  color: #e8e337;
+  outline: 2px solid #e8e337;
+  outline-offset: 5px;
+}
+
+/* Keep hamburger button on the right */
+.btn__menu {
+  display: none;
+  align-self: center;
+  margin-left: auto;
+  padding: 8px;
+  line-height: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* MOBILE MENU */
+.menu__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  background: #101522;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateX(100%);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0.35s ease;
+}
+
+/* OPEN MENU */
+.menu--open .menu__backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+/* CLOSE BUTTON */
+.btn__menu--close {
+  display: block;
+  position: absolute;
+  top: 25px;
+  right: 30px;
+
+  font-size: 32px;
+  color: #fff;
+  padding: 10px;
+}
+
+.btn__menu--close:hover {
+  color: #e63946;
+}
+
+/* MOBILE LINKS */
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  list-style: none;
+  padding: 0;
+}
+
+.menu__link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.menu__link:hover {
+  color: #e63946;
+}
+
+.no-cursor {
+  cursor: pointer;
+}
+
+/* PREVENT PAGE SCROLL WHEN MENU IS OPEN */
+body.menu--open {
+  overflow: hidden;
+}
+
+/* HIDE MOBILE MENU BUTTON ON DESKTOP */
+.btn__menu {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+/* HIDE MOBILE BACKDROP BY DEFAULT */
+.menu__backdrop {
+  display: none;
+}
+
+/* =========================
+   HERO / LANDING SCREEN
+========================= */
+
+.hero {
+  min-height: calc(100vh - 86px);
+  width: 100%;
+  padding: 60px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      rgba(100, 21, 255, 0.18),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #101326 0%, #17152e 100%);
+}
+
+.header__content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__eyebrow {
+  margin: 0 0 22px;
+  color: #c4b5fd;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.title {
+  max-width: 850px;
+  margin: 0 auto 25px;
+  color: #ffffff;
+  font-size: clamp(40px, 6vw, 76px);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+
+.title span {
+  display: block;
+  margin-top: 8px;
+  background: linear-gradient(90deg, #a78bfa, #ff536b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero__description {
+  max-width: 620px;
+  margin: 0 auto 35px;
+  color: #b8bfd4;
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.8;
+}
+
+/* =========================
+   SEARCH BAR
+========================= */
+
+.search__bar {
+  width: 100%;
+  max-width: 600px;
+  min-height: 64px;
+  margin: 0 auto;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+.search__bar input {
+  flex: 1;
+  width: 0;
+  min-width: 0;
+  padding: 0 16px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #243047;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.search__bar input::placeholder {
+  color: #8992a8;
+}
+
+.search__bar button {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6415ff, #8b5cf6);
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.search__bar button:hover {
+  transform: scale(1.04);
+  filter: brightness(1.12);
+}
+
+/* Explore link */
+.hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 35px;
+  color: #d5caff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero__scroll:hover {
+  color: #ffffff;
+}
+
+/* =========================
+   SHARED CHARACTER SECTIONS
+========================= */
+
+.superheros,
+.villains {
+  width: 100%;
+  min-height: 70vh;
+  padding: 110px 24px 100px;
+  box-sizing: border-box;
+  scroll-margin-top: 20px;
+}
+
+.superheros {
+  background: #14182b;
+}
+
+.villains {
+  background: linear-gradient(180deg, #19152f 0%, #101326 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.superheros .container,
+.villains .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Section labels */
+.section__eyebrow {
+  margin: 0 0 12px;
+  text-align: center;
+  color: #b9a1ff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.villains .section__eyebrow {
+  color: #ff8296;
+}
+
+/* Section headings */
+.superheros__title,
+.villains__title {
+  margin: 0 0 18px;
+  color: #ffffff;
+  text-align: center;
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.superheros__title::after,
+.villains__title::after {
+  content: "";
+  display: block;
+  width: 75px;
+  height: 4px;
+  margin: 18px auto 0;
+  border-radius: 10px;
+}
+
+.superheros__title::after {
+  background: linear-gradient(90deg, #6415ff, #a78bfa);
+}
+
+.villains__title::after {
+  background: linear-gradient(90deg, #ff1744, #a855f7);
+}
+
+.section__description {
+  max-width: 600px;
+  margin: 0 auto 50px;
+  color: #aeb6cc;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* =========================
+   CHARACTER CARD LAYOUT
+========================= */
+
+.superheros .user-list,
+.villains .user-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 340px));
+  justify-content: center;
+  align-items: stretch;
+  gap: 32px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.superheros .user,
+.villains .user {
+  min-width: 0;
+}
+
+.superheros .user-card,
+.villains .user-card {
+  height: 100%;
+  padding: 3px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #6415ff, #a855f7, #ff536b);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+.superheros .user-card:hover,
+.villains .user-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(100, 21, 255, 0.25);
+}
+
+.superheros .user-card__container,
+.villains .user-card__container {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 17px;
+  background: #151a2e;
+  color: #ffffff;
+}
+
+.superheros .pfp,
+.villains .pfp {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.superheros .hero__info,
+.villains .hero__info {
+  padding: 24px;
+}
+
+.superheros .hero__info h3,
+.villains .hero__info h3 {
+  margin: 0 0 18px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 26px;
+}
+
+.superheros .hero__pg,
+.villains .hero__pg {
+  padding: 11px 0;
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #d5d9e8;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.superheros .hero__pg b,
+.villains .hero__pg b {
+  color: #c4b5fd;
+}
+
+.superheros .user-list > p,
+.villains .user-list > p {
+  grid-column: 1 / -1;
+  margin: 20px auto;
+  color: #d5d9e8;
+  text-align: center;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  width: 100%;
+  min-height: 350px;
+  padding: 50px 20px;
+  margin-top: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #19152f;
+  color: #ffffff;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.footer__row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.footer__anchor {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.footer__anchor:hover {
+  transform: translateY(-4px);
+}
+
+.footer__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.footer__logo--img {
+  display: block;
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+}
+
+.footer__copyright {
+  margin: 0;
+  color: #e5e7eb;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* =========================
+   RESPONSIVE - TABLETS
+========================= */
+
+@media (max-width: 992px) {
+
+  #nav--pg nav {
+    padding: 12px 32px;
+  }
+
+  #ShV__logo {
+    width: 130px;
+    height: auto;
+  }
+
+  .nav__link--list {
+    gap: 24px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 80px 32px;
+  }
+
+  .title {
+    font-size: clamp(36px, 7vw, 60px);
+  }
+
+  .hero__description {
+    max-width: 560px;
+  }
+
+  .superheros,
+  .villains {
+    padding: 90px 32px;
+  }
+
+  .superheros .pfp,
+  .villains .pfp {
+    height: 260px;
+  }
+}
+
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+   #nav--pg nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    min-height: 85px;
+    padding: 8px 16px;
+  }
+
+  .logo__link {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: auto;
+  }
+
+  /* Hide desktop nav */
+  .nav__link--list {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .btn__menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: auto;
+    margin-top: 0;
+    align-self: center;
+    height: 44px;
+    padding: 8px;
+    line-height: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  /* Enable mobile menu */
+  .menu__backdrop {
+    display: flex;
+  }
+
+   #ShV__logo {
+    width: 120px;
+    height: 65px;
+  }
+
+  .hero {
+    padding: 70px 20px;
+  }
+
+  .hero__eyebrow {
+    letter-spacing: 3px;
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: clamp(30px, 9vw, 46px);
+    letter-spacing: -1px;
+  }
+
+  .hero__description {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .search__bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+    gap: 12px;
+    min-height: auto;
+  }
+
+  .search__bar input {
+    width: 100%;
+    height: 50px;
+    padding: 0 14px;
+    font-size: 16px;
+  }
+
+  .search__bar button {
+    width: 100%;
+    height: 52px;
+  }
+
+  .superheros,
+  .villains {
+    padding: 70px 20px;
+  }
+
+  .section__description {
+    margin-bottom: 40px;
+  }
+
+  .superheros .user-list,
+  .villains .user-list {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .superheros .pfp,
+  .villains .pfp {
+    height: 280px;
+  }
+
+  .superheros .hero__info h3,
+  .villains .hero__info h3 {
+    font-size: 24px;
+  }
+
+  .footer__row {
+    gap: 16px;
+  }
+
+  .footer__logo--img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .footer__copyright {
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   EXTRA SMALL PHONES
+========================= */
+
+@media (max-width: 480px) {
+
+   #nav--pg nav {
+    padding: 8px 12px;
+  }
+
+   #ShV__logo {
+    width: 100px;
+    height: 60px;
+  }
+
+
+  .btn__menu {
+    font-size: 28px;
+  }
+
+  .hero {
+    padding: 60px 16px;
+  }
+
+  .title {
+    font-size: clamp(26px, 10vw, 38px);
+    line-height: 1.15;
+  }
+
+  .hero__description {
+    font-size: 15px;
+  }
+
+  .search__bar {
+    border-radius: 14px;
+    padding: 10px;
+  }
+
+  .search__bar input {
+    height: 48px;
+  }
+
+  .search__bar button {
+    height: 48px;
+  }
+
+  .superheros,
+  .villains {
+    padding: 60px 16px;
+  }
+
+  .superheros .hero__info,
+  .villains .hero__info {
+    padding: 20px;
+  }
+
+  .superheros .pfp,
+  .villains .pfp {
+    height: 240px;
+  }
+
+  .superheros .hero__info h3,
+  .villains .hero__info h3 {
+    font-size: 22px;
+  }
+
+  .hero__pg {
+    font-size: 14px;
+  }
+
+  .footer__logo--img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .footer__copyright {
+    font-size: 13px;
+  }
+}
+/* =========================
+   FINAL NAVBAR ALIGNMENT FIX
+   Keep the logo on the left and hamburger on the right
+========================= */
+@media (max-width: 768px) {
+  #nav--pg nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    min-height: 85px;
+    padding: 8px 16px;
+    gap: 12px;
+  }
+
+  .logo__link {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    margin: 0 auto 0 0;
+  }
+
+  #ShV__logo {
+    display: block;
+    width: 120px;
+    height: 65px;
+    object-fit: contain;
+  }
+
+  .nav__link--list {
+    display: none;
+  }
+
+  .btn__menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    align-self: center;
+    margin: 0;
+    padding: 8px;
+    height: 44px;
+    line-height: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .menu__backdrop {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  #nav--pg nav {
+    padding: 8px 12px;
+  }
+
+  #ShV__logo {
+    width: 100px;
+    height: 60px;
+  }
+
+  .btn__menu {
+    height: 44px;
+    font-size: 26px;
+  }
+}

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Superheroes &amp; Villains</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script
+      src="https://kit.fontawesome.com/76d49e3ae2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- NAVIGATION -->
+    <section id="nav--pg">
+      <nav>
+        <a href="#" class="logo__link" aria-label="Home">
+          <img
+            id="ShV__logo"
+            src="assets/SH--V.png"
+            alt="Superheroes and Villains logo"
+          />
+        </a>
+
+        <ul class="nav__link--list">
+          <li class="nav__link">
+            <a href="#" class="nav__link--anchor link__hover-effect--yellow">
+              Home
+            </a>
+          </li>
+
+          <li class="nav__link">
+            <a
+              href="#superheroes"
+              class="nav__link--anchor link__hover-effect--yellow"
+            >
+              Superheroes
+            </a>
+          </li>
+
+          <li class="nav__link">
+            <a
+              href="#villains"
+              class="nav__link--anchor link__hover-effect--yellow"
+            >
+              Villains
+            </a>
+          </li>
+        </ul>
+        <button class="btn__menu" onclick="openMenu()">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </button>
+        <div class="menu__backdrop">
+          <button class="btn__menu btn__menu--close" onclick="closeMenu()">
+             <i class="fas fa-times"></i>
+          </button>
+          <ul class="menu__links">
+            <li class="menu__list">
+              <a href="#" class="menu__link" onclick="closeMenu()">Home</a>
+            </li>
+            <li class="menu__list"><a href="#superheros" class="menu__link" onclick="closeMenu()">Superheros</a>
+            </li>
+            <li class="menu__list"><a href="#villains"  class="menu__link" onclick="closeMenu()">Villains</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+    </section>
+
+    <main>
+      <!-- MAIN LANDING PAGE -->
+      <section class="hero" id="home">
+        <div class="header__content">
+          <p class="hero__eyebrow">CHOOSE YOUR SIDE</p>
+
+          <h1 class="title">
+            My Favorite
+            <span>Superheroes &amp; Villains</span>
+          </h1>
+
+          <p class="hero__description">
+            Discover my top 10 superheroes and villains, explore their
+            backgrounds, and learn about their abilities and powers.
+          </p>
+
+          <!-- SEARCH BAR -->
+          <form class="search__bar" role="search" id="hero-search-form">
+            <input
+              id="hero-search-input"
+              type="search"
+              placeholder="Search superheroes or villains..."
+              aria-label="Search superheroes or villains"
+            />
+
+            <button type="submit" aria-label="Search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+
+          <a href="#superheroes" class="hero__scroll">
+            Explore the characters
+            <i class="fa-solid fa-arrow-down"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- SUPERHEROES SECTION -->
+      <section class="superheros" id="superheroes">
+        <div class="container">
+          <p class="section__eyebrow">THE GOOD SIDE</p>
+          <h2 class="superheros__title">Superheroes</h2>
+          <p class="section__description">
+            Meet the heroes who protect the world and fight for justice.
+          </p>
+
+          <div class="user-list" id="superhero-list" aria-live="polite">
+            <p>Loading superheroes...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- VILLAINS SECTION -->
+      <section class="villains" id="villains">
+        <div class="container">
+          <p class="section__eyebrow">THE DARK SIDE</p>
+          <h2 class="villains__title">Villains</h2>
+          <p class="section__description">
+            Discover the powerful villains who challenge our favorite heroes.
+          </p>
+
+          <div class="user-list" id="villain-list" aria-live="polite">
+            <p>Loading villains...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer__row">
+        <a href="#" class="footer__anchor">
+          <figure class="footer__logo">
+            <img src="assets/SH--V.png" class="footer__logo--img" alt="" />
+          </figure>
+        </a>
+        <div class="footer__copyright">Copyright &copy; 2026 Freddy yanez</div>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="index.js"></script>
+  </body>
+</html>
+
